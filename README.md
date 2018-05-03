@@ -1,1 +1,1 @@
-just backup place for linux kernel configs.
+just backup place for random things. 
