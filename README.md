@@ -1,1 +1,1 @@
-just backup place for random things. 
+just backup place for random dev related things.
