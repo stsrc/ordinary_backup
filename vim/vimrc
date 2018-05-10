@@ -98,8 +98,8 @@ if has('cscope')
     nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
     nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>n :cn<CR><CR>
-    nmap <C-\>p :cprevious<CR><CR>
+    nmap <C-n> :cn<CR><CR>
+    nmap <C-p> :cprevious<CR><CR>
 
 
     " Using 'CTRL-spacebar' (intepreted as CTRL-@ by vim) then a search type
@@ -145,6 +145,7 @@ let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is c
 map <F3> :ConqueTermVSplit bash<CR>
 map <F4> :ConqueGdbVSplit<CR>
 
+let g:ConqueGdb_GdbExe = '/usr/bin/gdb-multiarch'
 "-------------------------- vim editor settings ----------
 autocmd BufWritePre * %s/\s\+$//e
 
