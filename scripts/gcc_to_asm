@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gcc -c $1 -S -fno-asynchronous-unwind-tables -std=gnu99 -O2 -Wall

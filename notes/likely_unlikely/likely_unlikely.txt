@@ -1,0 +1,32 @@
+https://en.wikipedia.org/wiki/Branch_predictor
+
+1. Branch predictor.
+
+Staic branch prediction -
+	* jump is always false and next instruction always executed (early SPARC and MIPS),
+	* jump is always true for lower addresses, and false for higher addresses than current instruction address.
+	* static branch prediction as a fall-back technique to the dynamic predictors (Pentium 4) 
+	* All decisions made at compile time.
+
+
+2. Branch target predictor - take jmp instruction and compute target address.
+
+3. Delay slot - instruction slot that gets executed without the effects of a preceding instruction.
+
+3. Dynamic branch prediction - 
+
+	* Next line prediction?
+
+ 	* One-level branch prediction
+	1-bit saturing counter - incremented when branch predicted correctly.
+	2-bit saturing counter - 4 states. 00 - strongly not taken, 11 - strongly taken. 
+	Incremented/decremented accordingly to the real life. Prediction is changed when conditional jump deviates twice from what it have done past. It seems to be better...
+	Two-level predictor - table of 2-bit saturing counters. It's hard...
+
+	Local branch prediction - it's...
+
+	Global branch prediction - ...
+
+	Alloyed branch prediction - ...
+	
+	Agree predictor - ...
