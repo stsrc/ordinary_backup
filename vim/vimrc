@@ -22,7 +22,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " ------------------------------ Vundle END ------------------------------------------------
-"
+" ------------------------------ CSCOPE ----------------------------------------------------
 "
 "
 "set tags=./tags;
@@ -147,7 +147,16 @@ map <F4> :ConqueGdbVSplit<CR>
 
 let g:ConqueGdb_GdbExe = '/usr/bin/gdb-multiarch'
 "-------------------------- vim editor settings ----------
+set tabstop=8
+set softtabstop=8
+set shiftwidth=8
+set noexpandtab
+
 autocmd BufWritePre * %s/\s\+$//e
+" from vertical to horizontal split
+map vh :windo wincmd K<CR>
+" from horizontal to vertical split
+map hv :windo wincmd H<CR>
 
 "-------------------------- NERDtree mapping -------------
 map <F2> :NERDTreeToggle<CR>
