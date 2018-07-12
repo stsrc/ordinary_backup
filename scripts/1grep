@@ -1,3 +1,3 @@
 #!/bin/bash
 
-grep -rnwi ./ -e "$1"
+grep -rnwi ./ -e "$@"
