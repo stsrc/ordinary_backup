@@ -147,6 +147,8 @@ map <F4> :ConqueGdbVSplit<CR>
 
 let g:ConqueGdb_GdbExe = '/usr/bin/gdb-multiarch'
 "-------------------------- vim editor settings ----------
+syntax on
+colorscheme pablo
 set tabstop=8
 set softtabstop=8
 set shiftwidth=8
