@@ -11,8 +11,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-scripts/Conque-GDB'
-Plugin 'lrvick/Conque-Shell'
 Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
@@ -139,13 +137,6 @@ if has('cscope')
 endif
 
 "--------------------------- cscope END ------------------
-"--------------------------- ConqueTERM START -------------
-let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
-let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly
-map <F3> :ConqueTermVSplit bash<CR>
-map <F4> :ConqueGdbVSplit<CR>
-
-let g:ConqueGdb_GdbExe = '/usr/bin/gdb-multiarch'
 "-------------------------- vim editor settings ----------
 syntax on
 colorscheme pablo
@@ -160,6 +151,7 @@ autocmd BufWritePre * %s/\s\+$//e
 map vh :windo wincmd K<CR>
 " from horizontal to vertical split
 map hv :windo wincmd H<CR>
+map <F3> :vert term
 
 "-------------------------- NERDtree mapping -------------
 map <F2> :NERDTreeToggle<CR>
