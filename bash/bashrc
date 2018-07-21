@@ -1,5 +1,0 @@
-export PATH=/home/kgotfryd/programming/workspace/ordinary_backup/scripts:$PATH
-
-export QSYS_ROOTDIR="/opt/Prime/intelFPGA_lite/17.1/quartus/sopc_builder/bin"
-
-export ALTERAOCLSDKROOT="/opt/Quartus/hld"
