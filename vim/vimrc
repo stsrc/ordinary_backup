@@ -151,7 +151,9 @@ autocmd BufWritePre * %s/\s\+$//e
 map vh :windo wincmd K<CR>
 " from horizontal to vertical split
 map hv :windo wincmd H<CR>
-map <F3> :vert term
+map <F3> :vert term<CR>
+" no <CR> - user will need to pass name of exe to call
+map <F4> :vert Termdebug ./
 
 "-------------------------- NERDtree mapping -------------
 map <F2> :NERDTreeToggle<CR>
