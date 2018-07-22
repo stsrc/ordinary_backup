@@ -31,3 +31,10 @@ popd
 rm -f ~/.vimrc
 ln -s $REPOPATH/vim/vimrc ~/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+
+#clone linux repo
+git clone https://github.com/torvlads/linux.git ~/programming/workspace/linux
+
+#clone grub repo
+git clone git://git.savannah.gnu.org/grub.git ~/programming/workspace/grub
