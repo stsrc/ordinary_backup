@@ -15,6 +15,7 @@ check_bashrc_presence "export QSYS_ROOTDIR=/opt/Prime/intelFPGA_lite/17.1/quartu
 check_bashrc_presence "export ALTERAOCLSDKROOT=/opt/Quartus/hld"
 check_bashrc_presence "cdw() { cd /home/kgotfryd/programming/workspace; }"
 check_bashrc_presence "cdwl() { cdw; cd linux; }"
+check_bashrc_presence "cdwo() { cdw; cd ordinary_backup; }"
 
 #fetch all submodules
 pushd $REPOPATH
