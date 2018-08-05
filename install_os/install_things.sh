@@ -23,8 +23,6 @@ git submodule update --recursive --remote
 popd
 
 #install vim
-apt list --installed | grep -q "vim" && (echo "remove vim first!" ; exit 1)
-#TODO?: this is stupid solution - it should be managed by apt, but ppa vs. trust issues...
 pushd $REPOPATH/vim/vim
 make
 sudo make install
@@ -39,5 +37,3 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #clone linux repo
 git clone https://github.com/torvlads/linux.git ~/programming/workspace/linux
 
-#clone grub repo
-git clone git://git.savannah.gnu.org/grub.git ~/programming/workspace/grub
