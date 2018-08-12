@@ -16,6 +16,8 @@ check_bashrc_presence "export ALTERAOCLSDKROOT=/opt/Quartus/hld"
 check_bashrc_presence "cdw() { cd /home/kgotfryd/programming/workspace; }"
 check_bashrc_presence "cdwl() { cdw; cd linux; }"
 check_bashrc_presence "cdwo() { cdw; cd ordinary_backup; }"
+check_bashrc_presence "c() { cd "$*"; ls; }"
+check_bashrc_presence "g() { git "$*"; }"
 
 #fetch all submodules
 pushd $REPOPATH
