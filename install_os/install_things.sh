@@ -16,8 +16,8 @@ check_bashrc_presence "export ALTERAOCLSDKROOT=/opt/Quartus/hld"
 check_bashrc_presence "cdw() { cd /home/kgotfryd/programming/workspace; }"
 check_bashrc_presence "cdwl() { cdw; cd linux; }"
 check_bashrc_presence "cdwo() { cdw; cd ordinary_backup; }"
-check_bashrc_presence "c() { if [[ "$1" =~ ^[.]+$ ]]; then NUM=$(echo "$1" | awk -F"." '{print NF-1}'); for i in {1..$NUM}; do cd .. ; done; else cd "$*" ; fi ; l ; }"
-check_bashrc_presence "g() { git "$*"; }"
+check_bashrc_presence "c() { if [[ \"$1\" =~ ^[.]+$ ]]; then NUM=$(echo \"$1\" | awk -F\".\" \'{print NF-1}\'); NUM=$(((2 * $NUM) - 1)) ; for i in $( seq 0 $NUM ); do cd .. ; done; else cd \"$*\" ; fi ; l ; }"
+check_bashrc_presence "g() { git \"$*\"; }"
 check_bashrc_presence "e() { exit; }"
 
 #fetch all submodules
