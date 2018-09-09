@@ -3,22 +3,29 @@
 REPOPATH="/home/kgotfryd/programming/workspace/ordinary_backup"
 
 #bashrc update
-check_bashrc_presence()
+check_presence()
 {
 	local SHOULDBE=$1
-	grep -q "$SHOULDBE" ~/.bashrc || (echo "$SHOULDBE" >> ~/.bashrc \
-		&& echo "Added \"$SHOULDBE\" to ~/.bashrc")
+	local FILE=$2
+	grep -q "$SHOULDBE" "$FILE" || (echo "$SHOULDBE" >> "$FILE" \
+		&& echo "Added \"$SHOULDBE\" to \"$FILE\"")
 }
 
-check_bashrc_presence "export PATH=/home/kgotfryd/programming/workspace/ordinary_backup/scripts:$PATH"
-check_bashrc_presence "export QSYS_ROOTDIR=/opt/Prime/intelFPGA_lite/17.1/quartus/sopc_builder/bin"
-check_bashrc_presence "export ALTERAOCLSDKROOT=/opt/Quartus/hld"
-check_bashrc_presence "cdw() { cd /home/kgotfryd/programming/workspace; }"
-check_bashrc_presence "cdwl() { cdw; cd linux; }"
-check_bashrc_presence "cdwo() { cdw; cd ordinary_backup; }"
-check_bashrc_presence "c() { if [[ \"$1\" =~ ^[.]+$ ]]; then NUM=$(echo \"$1\" | awk -F\".\" \'{print NF-1}\'); NUM=$((2 * ($NUM - 1))) ; for i in $( seq 0 $NUM ); do cd .. ; done; else cd \"$*\" ; fi ; l ; }"
-check_bashrc_presence "e() { exit; }"
-check_bashrc_presence "cat ~/TODO"
+check_presence "export PATH=/home/kgotfryd/programming/workspace/ordinary_backup/scripts:$PATH" "~/.bashrc"
+check_presence "export QSYS_ROOTDIR=/opt/Prime/intelFPGA_lite/17.1/quartus/sopc_builder/bin" "~/.bashrc"
+check_presence "export ALTERAOCLSDKROOT=/opt/Quartus/hld" "~/.bashrc"
+check_presence "cdw() { cd /home/kgotfryd/programming/workspace; }" "~/.bashrc"
+check_presence "cdwl() { cdw; cd linux; }" "~/.bashrc"
+check_presence "cdwo() { cdw; cd ordinary_backup; }" "~/.bashrc"
+check_presence "c() { if [[ \"$1\" =~ ^[.]+$ ]]; then NUM=$(echo \"$1\" | awk -F\".\" \'{print NF-1}\'); NUM=$((2 * ($NUM - 1))) ; for i in $( seq 0 $NUM ); do cd .. ; done; else cd \"$*\" ; fi ; l ; }" "~/.bashrc"
+check_presence "e() { exit; }" "~/.bashrc"
+check_presence "cat ~/TODO" "~/.bashrc"
+check_presence "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6001\", MODE=\"0666\"" "/etc/udev/rules.d/92-usbblaster.rules"
+check_presence "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6002\", MODE=\"0666\"" "/etc/udev/rules.d/92-usbblaster.rules"
+check_presence "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6003\", MODE=\"0666\"" "/etc/udev/rules.d/92-usbblaster.rules"
+check_presence "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6010\", MODE=\"0666\"" "/etc/udev/rules.d/92-usbblaster.rules"
+check_presence "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6810\", MODE=\"0666\"" "/etc/udev/rules.d/92-usbblaster.rules"
+
 
 #fetch all submodules
 pushd $REPOPATH
