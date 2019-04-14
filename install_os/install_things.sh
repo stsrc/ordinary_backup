@@ -22,6 +22,7 @@ check_presence "cdwo()" "cdwo() { cdw; cd ordinary_backup; }" ~/.bashrc
 check_presence "c()" "c() { if [[ \"\$1\" =~ ^[.]+$ ]]; then NUM=\$(echo \"\$1\" | awk -F\".\" \'{print NF-1}\'); NUM=\$((2 \* (\$NUM - 1))) ; for i in \$( seq 0 \$NUM ); do cd .. ; done; else cd \"\$*\" ; fi ; l ; }" ~/.bashrc
 
 check_presence "e()" "e() { exit; }" ~/.bashrc
+check_presence "f()" "f() { find ./ -name "*$1"; }" ~/.bashrc
 check_presence "cat ~/TODO" "cat ~/TODO" ~/.bashrc
 
 if [ ! -f "/etc/udev/rules.d/92-usbblaster.rules" ]; then
