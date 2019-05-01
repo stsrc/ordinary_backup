@@ -37,22 +37,21 @@ fi
 
 
 #vim installation
+ln -s $REPOPATH/vim/vimrc ~/.vimrc
 read -p "Install vim from submodule? y/n"
+
 if [ $REPLY == "y" ]; then
 	echo "installing vim"
-	##fetch all submodules
-	#pushd $REPOPATH
-	#git submodule update --recursive --remote
-	#popd
+	#fetch all submodules
+	pushd $REPOPATH
+	git submodule update --recursive --remote
+	popd
 
-	#install vim
-	#pushd $REPOPATH/vim/vim
-	#make
-	#sudo make install
-	#popd
-	#ln -s $REPOPATH/vim/vimrc ~/.vimrc
-else
-	echo "vim installation ommited"
+	install vim
+	pushd $REPOPATH/vim/vim
+	make
+	sudo make install
+	popd
 fi
 
 if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
