@@ -14,7 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'MattesGroeger/vim-bookmarks'
 Plugin 'vim-airline/vim-airline'
-
+Plugin 'lyuts/vim-rtags'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -120,8 +120,6 @@ if has('cscope')
     " other cscope related definitions
     nmap <C-n> :cn<CR><CR>
     nmap <C-p> :cprevious<CR><CR>
-
-  command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
 endif
 
 "--------------------------- cscope END ------------------
