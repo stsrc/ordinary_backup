@@ -1,4 +1,4 @@
-" --- VUNDLE START
+" ------------------------------ VUNDLE START ---------------------------------------------
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -13,6 +13,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'MattesGroeger/vim-bookmarks'
+Plugin 'vim-airline/vim-airline'
 
 
 " All of your Plugins must be added before the following line
@@ -21,8 +22,11 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-" --- Vundle END
-" --- CSCOPE
+" ------------------------------ Vundle END ------------------------------------------------
+" ------------------------------ CSCOPE ----------------------------------------------------
+"
+"
+"set tags=./tags;
 
 if has('cscope')
   set cscopetag cscopeverbose
@@ -95,15 +99,15 @@ if has('cscope')
     nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
     nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-n> :cn<CR><CR>
-    nmap <C-p> :cprevious<CR><CR>
-
 
     " Using 'CTRL-spacebar' (intepreted as CTRL-@ by vim) then a search type
     " makes the vim window split vertically, with search result displayed in
     " the new window.
     "
-    "
+    " (Note: earlier versions of vim may not have the :scs command, but it
+    " can be simulated roughly via:
+    "    nmap <C-@>s <C-W><C-S> :cs find s <C-R>=expand("<cword>")<CR><CR>
+
     nmap <C-@>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
     nmap <C-@>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
     nmap <C-@>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
@@ -113,11 +117,15 @@ if has('cscope')
     nmap <C-@>i :vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-@>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 
+    " other cscope related definitions
+    nmap <C-n> :cn<CR><CR>
+    nmap <C-p> :cprevious<CR><CR>
+
   command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
 endif
 
-"--- cscope END
-"--- vim editor settings
+"--------------------------- cscope END ------------------
+"-------------------------- vim editor settings ----------
 syntax on
 colorscheme pablo
 set tabstop=8
@@ -126,6 +134,7 @@ set shiftwidth=8
 set noexpandtab
 set backspace=indent,eol,start
 set ruler
+set hlsearch
 
 autocmd BufWritePre * %s/\s\+$//e
 " from vertical to horizontal split
@@ -136,9 +145,5 @@ map <F3> :vert term<CR>
 " no <CR> - user will need to pass name of exe to call
 map <F4> :vert Termdebug ./
 
-"--- NERDtree mapping
+"-------------------------- NERDtree mapping -------------
 map <F2> :NERDTreeToggle<CR>
-
-"--- YouCompleteMe
-let g:ycm_confirm_extra_conf = 0
-
