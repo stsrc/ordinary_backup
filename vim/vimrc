@@ -65,10 +65,8 @@ if has('cscope')
     "   'n'   go to the next search result.
     "   'previous' go to the previous search result.
     "
-    " Below are three sets of the maps: one set that just jumps to your
-    " search result, one that splits the existing vim window horizontally and
-    " diplays your search result in the new window, and one that does the same
-    " thing, but does a vertical split instead (vim 6 only).
+    " Below are two sets of the maps: one set that just jumps to your
+    " search result, and one that does a vertical split instead.
     "
     " I've used CTRL-\ and CTRL-@ as the starting keys for these maps, as it's
     " unlikely that you need their default mappings (CTRL-\'s default use is
@@ -125,7 +123,7 @@ endif
 "--------------------------- cscope END ------------------
 "-------------------------- vim editor settings ----------
 syntax on
-colorscheme pablo
+colorscheme peachpuff
 set tabstop=8
 set softtabstop=8
 set shiftwidth=8
