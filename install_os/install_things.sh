@@ -24,6 +24,7 @@ check_presence "c()" "c() { if [[ \"\$1\" =~ ^[.]+$ ]]; then NUM=\$(echo \"\$1\"
 check_presence "e()" "e() { exit; }" ~/.bashrc
 check_presence "f()" "f() { find ./ -name "*$1"; }" ~/.bashrc
 check_presence "cat ~/TODO" "cat ~/TODO" ~/.bashrc
+check_presence "g()" "g() { grep -rnwi ./ -e ".*$*.*"; }" ~/.bashrc
 
 if [ ! -f "/etc/udev/rules.d/92-usbblaster.rules" ]; then
 	check_presence "ATTRS{idProduct}==\"6001\"" "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6001\", MODE=\"0666\"" /tmp/92-usbblaster.rules
