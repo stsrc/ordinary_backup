@@ -19,7 +19,7 @@ check_presence "ALTERAOCLSDKROOT" "export ALTERAOCLSDKROOT=/opt/Quartus/hld" ~/.
 check_presence "cdw()" "cdw() { cd /home/kgotfryd/programming/workspace; }" ~/.bashrc
 check_presence "cdwl()" "cdwl() { cdw; cd linux; }" ~/.bashrc
 check_presence "cdwo()" "cdwo() { cdw; cd ordinary_backup; }" ~/.bashrc
-check_presence "c()" "c() { if [[ \"\$1\" =~ ^[.]+$ ]]; then NUM=\$(echo \"\$1\" | awk -F\".\" \'{print NF-1}\'); NUM=\$((2 \* (\$NUM - 1))) ; for i in \$( seq 0 \$NUM ); do cd .. ; done; else cd \"\$*\" ; fi ; l ; }" ~/.bashrc
+check_presence "c()" "c() { if [[ \"\$1\" =~ ^[.]+$ ]]; then NUM=\$(echo \"\$1\" | awk -F\".\" \'{print NF-1}\'); for i in \$( seq 1 \$NUM ); do cd .. ; done; else cd \"\$*\" ; fi ; l ; }" ~/.bashrc
 
 check_presence "e()" "e() { exit; }" ~/.bashrc
 check_presence "f()" "f() { find ./ -name "*$1"; }" ~/.bashrc
