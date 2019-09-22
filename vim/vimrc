@@ -128,6 +128,7 @@ set tabstop=8
 set softtabstop=8
 set shiftwidth=8
 set noexpandtab
+set noeol
 set backspace=indent,eol,start
 set ruler
 set hlsearch
