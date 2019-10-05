@@ -39,8 +39,7 @@ fi
 
 #vim installation
 ln -s $REPOPATH/vim/vimrc ~/.vimrc
-read -p "Install vim from submodule? y/n"
-
+read -p "Install vim from submodule? y/n: "
 if [ $REPLY == "y" ]; then
 	echo "installing vim"
 	#fetch all submodules
@@ -55,22 +54,31 @@ if [ $REPLY == "y" ]; then
 	popd
 fi
 
-if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+read -p "Install vundle from github? y/n (rather y):"
+if [ $REPLY = "y" ]; then
+	if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
+		git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	fi
 fi
 
 #clone linux repo
-if [ ! -d ~/programming/workspace/linux ]; then
-	git clone https://github.com/torvalds/linux.git ~/programming/workspace/linux
+read -p "Install linux from submodule? y/n: "
+if [ $REPLY == "y" ]; then
+	if [ ! -d ~/programming/workspace/linux ]; then
+		git clone https://github.com/torvalds/linux.git ~/programming/workspace/linux
+	fi
 fi
 
-tempdir = `mktemp -d`
-pushd $tempdir
-git clone https://github.com/universal-ctags/ctags.git
-pushd ctags
-./configure --prefix=/home/kgotfryd
-make
-make install
-popd
-popd
-rm -rf $tempdir
+read -p "Install universal ctags? y/n: "
+if [ $REPLY == "y" ]; then
+	tempdir = `mktemp -d`
+	pushd $tempdir
+	git clone https://github.com/universal-ctags/ctags.git
+	pushd ctags
+	./configure --prefix=/home/kgotfryd
+	make
+	make install
+	popd
+	popd
+	rm -rf $tempdir
+fi
