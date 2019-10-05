@@ -13,9 +13,9 @@ check_presence()
 		&& echo "Added \"$SHOULDBE\" to \"$FILE\"")
 }
 
-check_presence "ordinary_backup/scripts" "export PATH=/home/kgotfryd/programming/workspace/ordinary_backup/scripts:$PATH" ~/.bashrc
-check_presence "QSYS_ROOTDIR" "export QSYS_ROOTDIR=/opt/Prime/intelFPGA_lite/17.1/quartus/sopc_builder/bin" ~/.bashrc
-check_presence "ALTERAOCLSDKROOT" "export ALTERAOCLSDKROOT=/opt/Quartus/hld" ~/.bashrc
+mkdir -p /home/kgotfryd/bin
+
+check_presence "ordinary_backup/scripts" "export PATH=/home/kgotfryd/bin:/home/kgotfryd/programming/workspace/ordinary_backup/scripts:$PATH" ~/.bashrc
 check_presence "cdw()" "cdw() { cd /home/kgotfryd/programming/workspace; }" ~/.bashrc
 check_presence "cdwl()" "cdwl() { cdw; cd linux; }" ~/.bashrc
 check_presence "cdwo()" "cdwo() { cdw; cd ordinary_backup; }" ~/.bashrc
@@ -64,3 +64,13 @@ if [ ! -d ~/programming/workspace/linux ]; then
 	git clone https://github.com/torvalds/linux.git ~/programming/workspace/linux
 fi
 
+tempdir = `mktemp -d`
+pushd $tempdir
+git clone https://github.com/universal-ctags/ctags.git
+pushd ctags
+./configure --prefix=/home/kgotfryd
+make
+make install
+popd
+popd
+rm -rf $tempdir
