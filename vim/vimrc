@@ -91,7 +91,6 @@ set noexpandtab
 set noeol
 set backspace=indent,eol,start
 set ruler
-set hlsearch
 
 autocmd BufWritePre * %s/\s\+$//e
 " from vertical to horizontal split
