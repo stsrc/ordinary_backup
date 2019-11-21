@@ -40,7 +40,7 @@ check_presence "c()" "c() { if [[ \"\$1\" =~ ^[.]+$ ]]; then NUM=\$(echo \"\$1\"
 check_presence "e()" "e() { exit; }" ~/.bashrc
 check_presence "f()" "f() { find ./ -name "*$1"; }" ~/.bashrc
 check_presence "cat ~/TODO" "cat ~/TODO" ~/.bashrc
-check_presence "g()" "g() { grep -rnwi ./ -e ".*$*.*"; }" ~/.bashrc
+check_presence "g()" "g() { grep -rnwi ./ -e "$*"; }" ~/.bashrc
 check_presence "l()" "l() { ls ; }" ~/.bashrc
 
 touch ~/TODO
