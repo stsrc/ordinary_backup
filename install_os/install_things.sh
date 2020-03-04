@@ -97,29 +97,3 @@ if [ $REPLY == "y" ]; then
 		git clone https://github.com/torvalds/linux.git ~/programming/workspace/linux
 	fi
 fi
-
-read -p "Install universal ctags? y/n: " REPLY
-if [ $REPLY == "y" ]; then
-
-	sudo $pms -y install \
-        gcc make \
-        pkg-config autoconf automake \
-        python3-docutils \
-        libseccomp-dev \
-        libjansson-dev \
-        libyaml-dev \
-        libxml2-dev
-
-	tempdir=`mktemp -d`
-	pushd $tempdir
-	git clone https://github.com/universal-ctags/ctags.git
-	pushd ctags
-	./autogen.sh
-	./configure
-	make
-	sudo make install
-	popd
-	popd
-	rm -rf $tempdir
-fi
-
