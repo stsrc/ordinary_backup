@@ -41,7 +41,8 @@ check_presence "e()" "e() { exit; }" ~/.bashrc
 check_presence "f()" "f() { find ./ -name "*$1"; }" ~/.bashrc
 check_presence "cat ~/TODO" "cat ~/TODO" ~/.bashrc
 check_presence "g()" "g() { grep -rnwi ./ -e "$*"; }" ~/.bashrc
-check_presence "l()" "l() { ls ; }" ~/.bashrc
+#TODO make aliases? There are some strange problems with it, though...
+check_presence "alias l=" "l() { ls ; }" ~/.bashrc
 
 touch ~/TODO
 
