@@ -32,18 +32,14 @@ check_presence "export VISUAL" "export VISUAL=vim" ~/.bashrc
 check_presence "export EDITOR" "export EDITOR=\"\$VISUAL\"" ~/.bashrc
 
 check_presence "export PATH=.*ordinary_backup.*" "export PATH=/home/kgotfryd/programming/workspace/ordinary_backup/scripts:$PATH" ~/.bashrc
-check_presence "cdw()" "cdw() { cd /home/kgotfryd/programming/workspace; }" ~/.bashrc
-check_presence "cdwl()" "cdwl() { cdw; cd linux; }" ~/.bashrc
-check_presence "cdwo()" "cdwo() { cdw; cd ordinary_backup; }" ~/.bashrc
 check_presence "c()" "c() { if [[ \"\$1\" =~ ^[.]+$ ]]; then NUM=\$(echo \"\$1\" | awk -F\".\" '{print NF-1}'); for i in \$( seq 1 \$NUM ); do cd .. ; done; else cd \"\$*\" ; fi ; l ; }" ~/.bashrc
-
 check_presence "e()" "e() { exit; }" ~/.bashrc
 check_presence "f()" "f() { find ./ -name "*$1"; }" ~/.bashrc
-check_presence "cat ~/TODO" "cat ~/TODO" ~/.bashrc
 check_presence "g()" "g() { grep -rnwi ./ -e "$*"; }" ~/.bashrc
 #TODO make aliases? There are some strange problems with it, though...
 check_presence "alias l=" "l() { ls ; }" ~/.bashrc
 
+check_presence "cat ~/TODO" "cat ~/TODO" ~/.bashrc
 touch ~/TODO
 
 if [ ! -f "/etc/udev/rules.d/92-usbblaster.rules" ]; then
