@@ -65,34 +65,34 @@ fi
 git config --global user.name "Konrad Gotfryd"
 git config --global user.email gotfrydkonrad@gmail.com
 
-read -p "Install vim from submodule? y/n: " REPLY
-if [ $REPLY == "y" ]; then
-	echo "installing vim"
-	#fetch all submodules
-	pushd $REPOPATH
-	git submodule update --recursive --remote
-	popd
-
-	install vim
-	pushd $REPOPATH/vim/vim
-	make
-	sudo make install
-	popd
-fi
-
-read -p "Install vundle from github? y/n (rather y): " REPLY
+REPOPATH="https://github.com/VundleVim/Vundle.vim.git"
+read -p "Clone vundle from github? y/n (rather y): " REPLY
 if [ $REPLY == "y" ]; then
 	if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
-		git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+		git clone $REPOPATH ~/.vim/bundle/Vundle.vim
 	fi
 fi
 
-#clone linux repo
-read -p "Install linux from submodule? y/n: " REPLY
+REPOPATH="https://github.com/torvalds/linux.git"
+read -p "Clone linux from $REPOPATH? y/n: " REPLY
 if [ $REPLY == "y" ]; then
 	if [ ! -d ~/programming/workspace/linux ]; then
-		git clone https://github.com/torvalds/linux.git ~/programming/workspace/linux
+		git clone $REPOPATH ~/programming/workspace/linux
 	fi
 fi
 
-source ./install_stlink-tools.sh
+read -p "Instal stlink-1.6.0? y/n: " REPLY
+if [ $REPLY == "y" ]; then
+	sudo apt install cmake libusb-1.0-0 libusb-1.0-0-dev
+	pushd /tmp
+	wget https://github.com/texane/stlink/archive/v1.6.0.tar.gz
+	tar -xvf v1.6.0.tar.gz
+	pushd stlink-1.6.0
+	make release
+	pushd build/Release
+	sudo make install
+	popd
+	popd
+	rm -rf stlink-1.6.0
+	popd
+fi
