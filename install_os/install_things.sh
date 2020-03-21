@@ -6,7 +6,7 @@ if [ $? -ne 0 ]; then
 	echo "Please as root run visudo"
 	echo "Enter: %sudo ALL=(ALL:ALL) ALL"
 	echo "Then enter command: groupadd sudo"
-	echo "Then enter command: usermod -a -G sudo kgotfryd"
+	echo "Then enter command: usermod -a -G sudo ${USER}"
 	echo "Then rerun this script"
 	exit 1
 fi
@@ -15,7 +15,7 @@ sudo rm /tmp/test.file
 # pms - package management system
 pms=apt # TODO - make it system inpdenetable? Ubuntu 18.04 has some different which from centos
 
-REPOPATH="/home/kgotfryd/programming/workspace/ordinary_backup"
+REPOPATH="/home/${USER}/programming/workspace/ordinary_backup"
 
 #bashrc update
 check_presence()
@@ -31,7 +31,7 @@ check_presence()
 check_presence "export VISUAL" "export VISUAL=vim" ~/.bashrc
 check_presence "export EDITOR" "export EDITOR=\"\$VISUAL\"" ~/.bashrc
 
-check_presence "export PATH=.*ordinary_backup.*" "export PATH=/home/kgotfryd/programming/workspace/ordinary_backup/scripts:$PATH" ~/.bashrc
+check_presence "export PATH=.*ordinary_backup.*" "export PATH=/home/${USER}/programming/workspace/ordinary_backup/scripts:$PATH" ~/.bashrc
 # TODO - c() alias?
 check_presence "c()" "c() { if [[ \"\$1\" =~ ^[.]+$ ]]; then NUM=\$(echo \"\$1\" | awk -F\".\" '{print NF-1}'); for i in \$( seq 1 \$NUM ); do cd .. ; done; else cd \"\$*\" ; fi ; l ; }" ~/.bashrc
 check_presence "alias e=" "alias e='exit'" ~/.bashrc
