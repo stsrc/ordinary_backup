@@ -81,7 +81,7 @@ if [ $REPLY == "y" ]; then
 	fi
 fi
 
-read -p "Instal stlink-1.6.0? y/n: " REPLY
+read -p "Install stlink-1.6.0? y/n: " REPLY
 if [ $REPLY == "y" ]; then
 	sudo apt install cmake libusb-1.0-0 libusb-1.0-0-dev
 	pushd /tmp
@@ -95,4 +95,10 @@ if [ $REPLY == "y" ]; then
 	popd
 	rm -rf stlink-1.6.0
 	popd
+fi
+
+#bolt is a service for thunderbolt interface. I don't have any thunderbolt i/o, so remove it.
+read -p "Remove boltd? y/n: " REPLY
+if [ $REPLY == "y" ]; then
+	sudo apt purge bolt
 fi
