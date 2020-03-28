@@ -97,8 +97,13 @@ if [ $REPLY == "y" ]; then
 	popd
 fi
 
+sudo apt install cscope -y
+
 #bolt is a service for thunderbolt interface. I don't have any thunderbolt i/o, so remove it.
+# TODO - are you sure? ubuntu has in it's settings thunderbolt part...
 read -p "Remove boltd? y/n: " REPLY
 if [ $REPLY == "y" ]; then
 	sudo apt purge bolt
 fi
+
+
