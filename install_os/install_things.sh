@@ -52,7 +52,6 @@ if [ ! -f "/etc/udev/rules.d/92-usbblaster.rules" ]; then
 	sudo mv /tmp/92-usbblaster.rules /etc/udev/rules.d/92-usbblaster.rules
 fi
 
-
 #vim installation
 rm ~/.vimrc
 ln -s $REPOPATH/vim/vimrc ~/.vimrc
@@ -106,4 +105,10 @@ if [ $REPLY == "y" ]; then
 	sudo apt purge bolt
 fi
 
+read -p "Load gnome terminal color settings? MAY BREAK THINGS! y/n: " REPLY
+if [ $REPLY == "y" ]; then
+	cat ./gnome_terminal_settings | dconf load /org/gnome/terminal/legacy/profiles:/
+fi
 
+vim -c VundleInstall
+#TODO; how one could exit from such process?
