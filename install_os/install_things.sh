@@ -35,7 +35,7 @@ check_presence "export PATH=.*ordinary_backup.*" "export PATH=/home/${USER}/prog
 # TODO - c() alias?
 check_presence "c()" "c() { if [[ \"\$1\" =~ ^[.]+$ ]]; then NUM=\$(echo \"\$1\" | awk -F\".\" '{print NF-1}'); for i in \$( seq 1 \$NUM ); do cd .. ; done; else cd \"\$*\" ; fi ; l ; }" ~/.bashrc
 check_presence "alias e=" "alias e='exit'" ~/.bashrc
-check_presence "alias f=" "alias f=' find ./ -name'" ~/.bashrc
+check_presence "f()" "f() { find ./ -name \"*\$**\" ; }" ~/.bashrc
 check_presence "alias g=" "alias g='grep -rnwi ./ -e'" ~/.bashrc
 check_presence "alias l=" "l() { ls ; }" ~/.bashrc
 
@@ -109,6 +109,25 @@ read -p "Load gnome terminal color settings? MAY BREAK THINGS! y/n: " REPLY
 if [ $REPLY == "y" ]; then
 	cat ./gnome_terminal_settings | dconf load /org/gnome/terminal/legacy/profiles:/
 fi
+
+sudo apt install ufw apache2 nfs-kernel-server -y
+#TODO: allow for user public_html
+#TODO: make following ip generic
+sudo ufw allow from 192.168.0.0/24 to any port 22    #ssh
+sudo ufw allow from 192.168.0.0/24 to any port 80    #http
+sudo ufw allow from 192.168.0.0/24 to any port 13025 #nfs
+sudo ufw allow from 192.168.0.0/24 to any port 111   #nfs
+sudo ufw allow from 192.168.0.0/24 to any port 5901  #nfs
+
+sudo sed -i=backup 's/RPCMOUNTDOPTS=".*"/RPCMOUNTDOPTS="-p 13025"/' /etc/default/nfs-kernel-server
+sudo systemctl restart nfs-kernel-server.service
+
+mkdir ${HOME}/exports
+exportpath="${HOME}/exports"
+sudo chown kgotfryd:kgotfryd /etc/exports
+echo "${exportpath} *(rw,sync,no_subtree_check,anonuid=1000,anongid=1000,all_squash)" > /etc/exports
+sudo chown root:root /etc/exports
+sudo exportfs -r
 
 vim -c VundleInstall
 #TODO; how one could exit from such process?
