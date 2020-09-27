@@ -12,6 +12,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'MattesGroeger/vim-bookmarks'
+Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 
 " All of your Plugins must be added before the following line
@@ -81,7 +82,8 @@ if has('cscope')
 endif
 
 " - vim
-syntax on
+ syntax on
+" syntax off
 colorscheme industry
 "colorscheme desert
 set tabstop=8

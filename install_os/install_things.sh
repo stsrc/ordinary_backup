@@ -38,6 +38,7 @@ check_presence "alias e=" "alias e='exit'" ~/.bashrc
 check_presence "f()" "f() { find ./ -name \"*\$**\" ; }" ~/.bashrc
 check_presence "alias g=" "alias g='grep -rnwi ./ -e'" ~/.bashrc
 check_presence "alias l=" "l() { ls ; }" ~/.bashrc
+check_presence "rm()" "rm() { mkdir -p /opt/trash; mv $* /opt/trash; }" ~/.bashrc
 
 check_presence "head -n 3 ~/TODO" "head -n 3 ~/TODO" ~/.bashrc
 touch ~/TODO
