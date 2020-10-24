@@ -93,6 +93,7 @@ set noexpandtab
 set noeol
 set backspace=indent,eol,start
 set ruler
+set ff=unix
 
 autocmd BufWritePre * %s/\s\+$//e
 " from vertical to horizontal split
@@ -100,6 +101,7 @@ map vh :windo wincmd K<CR>
 " from horizontal to vertical split
 map hv :windo wincmd H<CR>
 
+map <F3> :vert term<CR>
 " - airline settings
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tagbar#flags = 's'
