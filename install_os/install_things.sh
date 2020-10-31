@@ -35,7 +35,7 @@ check_presence "export PATH=.*ordinary_backup.*" "export PATH=/home/${USER}/prog
 # TODO - c() alias?
 check_presence "c()" "c() { if [[ \"\$1\" =~ ^[.]+$ ]]; then NUM=\$(echo \"\$1\" | awk -F\".\" '{print NF-1}'); for i in \$( seq 1 \$NUM ); do cd .. ; done; else cd \"\$*\" ; fi ; l ; }" ~/.bashrc
 check_presence "alias e=" "alias e='exit'" ~/.bashrc
-check_presence "f()" "f() { find ./ -name \"*\$**\" ; }" ~/.bashrc
+check_presence "f()" "f() { find ./ -iname \"*\$**\" ; }" ~/.bashrc
 check_presence "alias g=" "alias g='grep -rnwi ./ -e'" ~/.bashrc
 check_presence "alias l=" "l() { ls ; }" ~/.bashrc
 check_presence "rm()" "rm() { mkdir -p /opt/trash; mv $* /opt/trash; }" ~/.bashrc
