@@ -1,0 +1,2 @@
+Source: https://kernelnewbies.org/FirstKernelPatch
+git show HEAD | perl scripts/get_maintainer.pl --separator , --nokeywords --nogit --nogit-fallback --norolestats --nol
