@@ -110,13 +110,6 @@ fi
 
 sudo $pms install cscope -y
 
-#bolt is a service for thunderbolt interface. I don't have any thunderbolt i/o, so remove it.
-# TODO - are you sure? ubuntu has in it's settings thunderbolt part...
-read -p "Remove boltd? y/n: " REPLY
-if [ $REPLY == "y" ]; then
-	sudo $pms purge bolt
-fi
-
 read -p "Load gnome terminal color settings? MAY BREAK THINGS! y/n: " REPLY
 if [ $REPLY == "y" ]; then
 	cat ./gnome_terminal_settings | dconf load /org/gnome/terminal/legacy/profiles:/
