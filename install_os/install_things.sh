@@ -13,7 +13,18 @@ fi
 sudo rm /tmp/test.file
 
 # pms - package management system
-pms=apt # TODO - make it system inpdenetable? Ubuntu 18.04 has some different which from centos
+hasApt = $(which apt)
+if [ -z $hasApt ]; then
+	#maybe yum?
+	hasYum=$(which yum);
+	if [ -z $hasYum ]; then
+		echo "OS does not have apt or yum, aborting script execution";
+		exit 1
+	fi
+	pms = yum;
+else
+	pms = apt;
+fi
 
 REPOPATH="/home/${USER}/programming/workspace/ordinary_backup"
 
