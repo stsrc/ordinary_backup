@@ -43,7 +43,7 @@ check_presence "export VISUAL" "export VISUAL=vim" ~/.bashrc
 check_presence "export EDITOR" "export EDITOR=\"\$VISUAL\"" ~/.bashrc
 
 check_presence "export PATH=.*ordinary_backup.*" "export PATH=/home/${USER}/programming/workspace/ordinary_backup/scripts:$PATH" ~/.bashrc
-# TODO - c() alias?
+
 check_presence "c()" "c() { if [[ \"\$1\" =~ ^[.]+$ ]]; then NUM=\$(echo \"\$1\" | awk -F\".\" '{print NF-1}'); for i in \$( seq 1 \$NUM ); do cd .. ; done; else cd \"\$*\" ; fi ; l ; }" ~/.bashrc
 check_presence "alias e=" "alias e='exit'" ~/.bashrc
 check_presence "f()" "f() { find ./ -iname \"*\$**\" ; }" ~/.bashrc
