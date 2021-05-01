@@ -83,7 +83,7 @@ fi
 
 read -p "Install stlink-1.6.0? y/n: " REPLY
 if [ $REPLY == "y" ]; then
-	sudo apt install cmake libusb-1.0-0 libusb-1.0-0-dev
+	sudo $pms install cmake libusb-1.0-0 libusb-1.0-0-dev
 	pushd /tmp
 	wget https://github.com/texane/stlink/archive/v1.6.0.tar.gz
 	tar -xvf v1.6.0.tar.gz
@@ -97,13 +97,13 @@ if [ $REPLY == "y" ]; then
 	popd
 fi
 
-sudo apt install cscope -y
+sudo $pms install cscope -y
 
 #bolt is a service for thunderbolt interface. I don't have any thunderbolt i/o, so remove it.
 # TODO - are you sure? ubuntu has in it's settings thunderbolt part...
 read -p "Remove boltd? y/n: " REPLY
 if [ $REPLY == "y" ]; then
-	sudo apt purge bolt
+	sudo $pms purge bolt
 fi
 
 read -p "Load gnome terminal color settings? MAY BREAK THINGS! y/n: " REPLY
@@ -111,7 +111,7 @@ if [ $REPLY == "y" ]; then
 	cat ./gnome_terminal_settings | dconf load /org/gnome/terminal/legacy/profiles:/
 fi
 
-sudo apt install ufw apache2 nfs-kernel-server -y
+sudo $pms install ufw apache2 nfs-kernel-server -y
 #TODO: allow for user public_html
 #TODO: make following ip generic
 sudo ufw allow from 192.168.0.0/24 to any port 22    #ssh
