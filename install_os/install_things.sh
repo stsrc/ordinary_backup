@@ -52,7 +52,7 @@ check_presence "alias l=" "l() { ls ; }" ~/.bashrc
 check_presence "rm()" "rm() { mkdir -p /opt/trash; mv $* /opt/trash; }" ~/.bashrc
 
 check_presence "head -n 3 ~/TODO" "head -n 3 ~/TODO" ~/.bashrc
-touch ~/TODO
+gpg --output ~/TODO --decrypt $REPOPATH/install_os/TODO.gpg
 
 if [ ! -f "/etc/udev/rules.d/92-usbblaster.rules" ]; then
 	check_presence "ATTRS{idProduct}==\"6001\"" "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6001\", MODE=\"0666\"" /tmp/92-usbblaster.rules
