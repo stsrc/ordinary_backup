@@ -19,4 +19,4 @@ background-color='rgb(255,255,255)'
 use-theme-colors=false
 palette=['rgb(0,0,0)', 'rgb(205,0,0)', 'rgb(0,169,0)', 'rgb(0,170,0)', 'rgb(93,102,137)', 'rgb(0,0,0)', 'rgb(103,103,196)', 'rgb(255,255,255)', 'rgb(64,64,64)', 'rgb(205,0,0)', 'rgb(0,0,0)', 'rgb(187,187,0)', 'rgb(63,63,189)', 'rgb(255,0,255)', 'rgb(151,151,255)', 'rgb(0,0,0)']
 foreground-color='rgb(0,0,0)'
-visible-name='Unnamed but morning'
+visible-name='UnnamedMorning'
