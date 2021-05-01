@@ -95,7 +95,7 @@ set backspace=indent,eol,start
 set ruler
 set ff=unix
 
-autocmd BufWritePre * %s/\s\+$//e
+autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> %s/\s\+$//e
 " from vertical to horizontal split
 map vh :windo wincmd K<CR>
 " from horizontal to vertical split
