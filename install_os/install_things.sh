@@ -132,5 +132,7 @@ echo "${exportpath} *(rw,sync,no_subtree_check,anonuid=1000,anongid=1000,all_squ
 sudo chown root:root /etc/exports
 sudo exportfs -r
 
+sudo $pms install exuberant-ctags -y #needed for tagbar/vim-airline 
+
 vim -c VundleInstall
 #TODO; how one could exit from such process?
