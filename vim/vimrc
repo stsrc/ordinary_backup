@@ -104,4 +104,3 @@ map hv :windo wincmd H<CR>
 map <F3> :vert term<CR>
 " - airline settings
 let g:airline#extensions#tagbar#enabled = 1
-let g:airline#extensions#tagbar#flags = 's'

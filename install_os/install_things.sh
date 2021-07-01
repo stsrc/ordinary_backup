@@ -136,3 +136,5 @@ sudo $pms install exuberant-ctags -y #needed for tagbar/vim-airline
 
 vim -c VundleInstall
 #TODO; how one could exit from such process?
+
+#TODO apache2 installation
