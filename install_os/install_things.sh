@@ -13,7 +13,7 @@ fi
 sudo rm /tmp/test.file
 
 # pms - package management system
-hasApt = $(which apt)
+hasApt=$(which apt)
 if [ -z $hasApt ]; then
 	#maybe yum?
 	hasYum=$(which yum);
@@ -21,9 +21,9 @@ if [ -z $hasApt ]; then
 		echo "OS does not have apt or yum, aborting script execution";
 		exit 1
 	fi
-	pms = yum;
+	pms=yum;
 else
-	pms = apt;
+	pms=apt;
 fi
 
 REPOPATH="/home/${USER}/programming/workspace/ordinary_backup"
@@ -125,7 +125,7 @@ sudo ufw allow from 192.168.0.0/16 to any port 5901  #nfs
 sudo sed -i=backup 's/RPCMOUNTDOPTS=".*"/RPCMOUNTDOPTS="-p 13025"/' /etc/default/nfs-kernel-server
 sudo systemctl restart nfs-kernel-server.service
 
-mkdir ${HOME}/exports
+mkdir -p ${HOME}/exports
 exportpath="${HOME}/exports"
 sudo chown kgotfryd:kgotfryd /etc/exports
 echo "${exportpath} *(rw,sync,no_subtree_check,anonuid=1000,anongid=1000,all_squash)" > /etc/exports
