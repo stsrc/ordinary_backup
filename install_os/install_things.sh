@@ -50,17 +50,24 @@ check_presence "f()" "f() { find ./ -iname \"*\$**\" ; }" ~/.bashrc
 check_presence "alias g=" "alias g='grep -rnwi ./ -e'" ~/.bashrc
 check_presence "alias l=" "l() { ls ; }" ~/.bashrc
 
-check_presence "head -n 3 ~/TODO" "head -n 3 ~/TODO" ~/.bashrc
-gpg --output ~/TODO --decrypt $REPOPATH/install_os/TODO.gpg
+read -p "Install todo file? y/n: " REPLY
+if [ $REPLY == "y" ]; then
+	check_presence "head -n 3 ~/TODO" "head -n 3 ~/TODO" ~/.bashrc
+	gpg --output ~/TODO --decrypt $REPOPATH/install_os/TODO.gpg
+fi
 
-if [ ! -f "/etc/udev/rules.d/92-usbblaster.rules" ]; then
-	check_presence "ATTRS{idProduct}==\"6001\"" "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6001\", MODE=\"0666\"" /tmp/92-usbblaster.rules
-	check_presence "ATTRS{idProduct}==\"6002\"" "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6002\", MODE=\"0666\"" /tmp/92-usbblaster.rules
-	check_presence "ATTRS{idProduct}==\"6003\"" "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6003\", MODE=\"0666\"" /tmp/92-usbblaster.rules
-	check_presence "ATTRS{idProduct}==\"6010\"" "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6010\", MODE=\"0666\"" /tmp/92-usbblaster.rules
-	check_presence "ATTRS{idProduct}==\"6810\"" "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6810\", MODE=\"0666\"" /tmp/92-usbblaster.rules
+read -p "Install udev usbblaster rules? y/n: " REPLY
 
-	sudo mv /tmp/92-usbblaster.rules /etc/udev/rules.d/92-usbblaster.rules
+if [ $REPLY == "y" ]; then
+	if [ ! -f "/etc/udev/rules.d/92-usbblaster.rules" ]; then
+		check_presence "ATTRS{idProduct}==\"6001\"" "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6001\", MODE=\"0666\"" /tmp/92-usbblaster.rules
+		check_presence "ATTRS{idProduct}==\"6002\"" "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6002\", MODE=\"0666\"" /tmp/92-usbblaster.rules
+		check_presence "ATTRS{idProduct}==\"6003\"" "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6003\", MODE=\"0666\"" /tmp/92-usbblaster.rules
+		check_presence "ATTRS{idProduct}==\"6010\"" "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6010\", MODE=\"0666\"" /tmp/92-usbblaster.rules
+		check_presence "ATTRS{idProduct}==\"6810\"" "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"09fb\", ATTRS{idProduct}==\"6810\", MODE=\"0666\"" /tmp/92-usbblaster.rules
+
+		sudo mv /tmp/92-usbblaster.rules /etc/udev/rules.d/92-usbblaster.rules
+	fi
 fi
 
 #vim installation
