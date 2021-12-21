@@ -121,6 +121,8 @@ sudo ufw allow from 192.168.0.0/16 to any port 80    #http
 sudo ufw allow from 192.168.0.0/16 to any port 13025 #nfs
 sudo ufw allow from 192.168.0.0/16 to any port 111   #nfs
 sudo ufw allow from 192.168.0.0/16 to any port 5901  #nfs
+sudo ufw allow from 192.168.0.0/16 to any port 22    #ssh
+sudo ufw enable
 
 sudo sed -i=backup 's/RPCMOUNTDOPTS=".*"/RPCMOUNTDOPTS="-p 13025"/' /etc/default/nfs-kernel-server
 sudo systemctl restart nfs-kernel-server.service
