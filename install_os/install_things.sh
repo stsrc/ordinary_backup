@@ -56,6 +56,11 @@ if [ $REPLY == "y" ]; then
 	gpg --output ~/TODO --decrypt $REPOPATH/install_os/TODO.gpg
 fi
 
+read -p "Install /etc/hosts file? y/n: " REPLY
+if [ $REPLY == "y" ]; then
+	gpg --output /etc/hosts --decrypt $REPOPATH/install_os/hosts.gpg
+fi
+
 read -p "Install udev usbblaster rules? y/n: " REPLY
 
 if [ $REPLY == "y" ]; then
