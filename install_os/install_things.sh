@@ -91,8 +91,10 @@ else
 	isgitpresent="true"
 fi
 
-git config --global user.name "Konrad Gotfryd"
-git config --global user.email gotfrydkonrad@gmail.com
+if [ "$isgitpresent" == "true" ]; then
+	git config --global user.name "Konrad Gotfryd"
+	git config --global user.email gotfrydkonrad@gmail.com
+fi
 
 if [ "$isgitpresent" == "true" ]; then
 	REPOPATH="https://github.com/VundleVim/Vundle.vim.git"
