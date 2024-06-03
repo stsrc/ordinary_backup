@@ -193,3 +193,8 @@ if [ "$isgitpresnet" == "true" ]; then
 		vim -c VundleInstall
 	fi
 fi
+
+read -p "Install minicom? y/n: " REPLY
+if [ $REPLY == "y" ]; then
+	sudo $pms install minicom -y
+fi
