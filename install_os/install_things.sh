@@ -199,4 +199,9 @@ fi
 read -p "Install minicom? y/n: " REPLY
 if [ $REPLY == "y" ]; then
 	sudo $pms install minicom -y
+	read -p "Add $USER to dialout group, so to use minicom sudo won't be needed? y/n: "
+	if [ $REPLY == "y" ]; then
+		sudo adduser $USER dialout
+		echo "please reboot after script ends"
+	fi
 fi
