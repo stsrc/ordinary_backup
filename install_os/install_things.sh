@@ -153,9 +153,16 @@ has_ufw="false"
 read -p "Install and configure ufw? y/n: " REPLY
 if [ $REPLY == "y" ]; then
 	sudo $pms install ufw -y
-	sudo ufw allow from 192.168.0.0/16 to any port 22 #ssh
 	sudo ufw enable
 	has_ufw="true"
+fi
+
+read -p "Install openssh-server? y/n: " REPLY
+if [ $REPLY == "y" ]; then
+	sudo $pms install openssh-server -y
+	if [ "$has_ufw" == "true" ]; then
+		sudo ufw allow from 192.168.0.0/16 to any port 22 #ssh
+	fi
 fi
 
 read -p "Install apache2? y/n: " REPLY
