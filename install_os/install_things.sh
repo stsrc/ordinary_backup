@@ -212,3 +212,8 @@ if [ $REPLY == "y" ]; then
 		echo "please reboot after script ends"
 	fi
 fi
+
+read -p "Install clang-format? y/n: " REPLY
+if [ $REPLY == "y" ]; then
+	sudo $pms install clang-format -y
+fi

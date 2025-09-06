@@ -1,0 +1,24 @@
+#!/bin/bash
+# Git pre-commit hook to auto-fix C/C++ style using clang-format-diff
+
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# Get list of staged C/C++ files
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(c|cc|h)$' || true)
+if [ -z "$FILES" ]; then
+    exit 0
+fi
+
+# Generate diff for staged files and format it
+git diff -U0 --cached -- $FILES \
+    | clang-format-diff -style GNU -p1 -i
+
+# Re-add potentially modified files to the index
+echo "$FILES" | while read -r file; do
+    if [ -f "$file" ]; then
+        git add "$file"
+    fi
+done
+
+exit 0

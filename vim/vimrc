@@ -85,8 +85,8 @@ endif
 " - vim
  syntax on
 " syntax off
-colorscheme industry
-"colorscheme desert
+"colorscheme industry
+colorscheme desert
 set tabstop=8
 set softtabstop=8
 set shiftwidth=8
